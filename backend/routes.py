@@ -1,7 +1,42 @@
 from flask import current_app,jsonify,request
 from app import create_app,db
 from models import Articles,articles_schema
+from coinmetrics.api_client import CoinMetricsClient
+import requests
+from os import environ
+import sys
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import logging
+from datetime import date, datetime, timedelta
+from coinmetrics.api_client import CoinMetricsClient
+import json
+import logging
+from pytz import timezone as timezone_conv
+from datetime import timezone as timezone_info
+from statistics import *
+from datetime import date, datetime, timedelta
 
+
+#set up coinmetrics
+sns.set_theme()
+sns.set(rc={'figure.figsize':(12,8)})
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+try:
+    api_key = environ["CM_API_KEY"]
+    logging.info("Using API key found in environment")
+except KeyError:
+    api_key = ""
+    logging.info("API key not found. Using community client")
+
+
+client = CoinMetricsClient(api_key)
+#get date (yesterday: last available data)
 # Create an application instance
 app = create_app()
 
@@ -21,6 +56,33 @@ def articles():
 
 	return jsonify(results)
 
+
+@app.route("/coins", methods=["GET"], strict_slashes=False)
+def coins():
+	yesterday = datetime.now() - timedelta(1)
+	d1 = yesterday.strftime("%Y-%m-%d")
+
+	metrics = "PriceUSD"
+	frequency = "1d"
+	start_time = d1
+	end_time = d1
+
+	asset_with_ref_rates = ['bch', 'bsv', 'btc', 'btg', 'dash', 'doge', 'etc', 'eth', 'ltc', 'vtc', 'xmr', 'zec']
+
+	df_diffmean = client.get_asset_metrics(
+    	assets=asset_with_ref_rates,
+    	metrics=metrics,
+    	frequency=frequency,
+    	start_time=start_time,
+    	end_time=end_time).to_dataframe()
+
+	rates = {}
+
+	for i in range(12):
+		ass=df_diffmean.iloc[i]
+		rates[ass['asset']] = ass['PriceUSD']
+
+	return jsonify(rates) 
 
 # change debug to False when in prod
 if __name__ == "__main__":
