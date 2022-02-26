@@ -57,7 +57,7 @@ def articles():
 	return jsonify(results)
 
 
-@app.route("/coins", methods=["GET"], strict_slashes=False)
+@app.route("/coins", methods=["GET"])
 def coins():
 	yesterday = datetime.now() - timedelta(1)
 	d1 = yesterday.strftime("%Y-%m-%d")
@@ -82,8 +82,8 @@ def coins():
 		ass=df_diffmean.iloc[i]
 		rates[ass['asset']] = ass['PriceUSD']
 
-	return jsonify(rates) 
+	return jsonify(rates)
 
 # change debug to False when in prod
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=True, port=5000)

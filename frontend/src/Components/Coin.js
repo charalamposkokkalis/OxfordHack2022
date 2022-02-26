@@ -24,7 +24,7 @@ const Coin = (props) => {
             onChange={handleChange}
             helperText="Please select your crypto"
           >
-            {props.choices.map((choice) => (
+            {Object.keys(props.choices).map((choice) => (
               <MenuItem value={choice}>{choice}</MenuItem>
             ))}
           </TextField>
@@ -38,7 +38,16 @@ const Coin = (props) => {
           />
         </Grid>
         <Grid item xs>
-          <Typography id={props.id + " value"}> {quantity} </Typography>
+          <Typography id={props.id + " value"}>
+            {" "}
+            {quantity
+              ? parseFloat(quantity) *
+                props.choices[
+                  document.getElementById(props.id + " choose crypto")
+                    .textContent
+                ]
+              : 0}{" "}
+          </Typography>
         </Grid>
       </Grid>
     </div>
@@ -46,3 +55,5 @@ const Coin = (props) => {
 };
 
 export default Coin;
+
+

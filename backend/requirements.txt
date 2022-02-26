@@ -1,5 +1,7 @@
 alembic==1.6.5
 click==8.0.1
+coinmetrics==0.2.5
+coinmetrics-api-client==2022.2.23.23.0
 Flask==2.0.1
 Flask-Cors==3.0.10
 flask-marshmallow==0.14.0
@@ -14,8 +16,10 @@ MarkupSafe==2.0.1
 marshmallow==3.13.0
 marshmallow-sqlalchemy==0.26.1
 mysqlclient==2.0.3
+pandas==1.4.1
 python-dateutil==2.8.2
 python-editor==1.0.4
+seaborn==0.11.2
 six==1.16.0
 SQLAlchemy==1.4.22
 Werkzeug==2.0.1

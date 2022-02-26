@@ -9,6 +9,7 @@ function App() {
 
   // Modify the current state by setting the new data to
   // the response from the backend
+  /*
   useEffect(() => {
     fetch("http://localhost:5000/articles", {
       methods: "GET",
@@ -20,6 +21,7 @@ function App() {
       .then((response) => setArticles(response))
       .catch((error) => console.log(error));
   }, []);
+*/
 
   return (
     <BrowserRouter>
