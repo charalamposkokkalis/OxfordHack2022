@@ -5,50 +5,50 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 
 const Coin = (props) => {
   const [crypto, setCrypto] = useState("");
+  const [quantity, setQuantity] = useState(0);
 
   const handleChange = (event) => {
     setCrypto(event.target.value);
   };
 
+  const handleClick = (event) => {
+    console.log(event);
+  };
+
   return (
-    <Box
-      component="form"
-      sx={{
-        "& .MuiTextField-root": { m: 1, width: "25ch" },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <FormControl>
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <InputLabel id="demo-simple-select-label">Coin</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={crypto}
-              label="Coin"
-              onChange={handleChange}
-            >
-              {props.choices.map((choice) => (
-                <MenuItem value={choice}>{choice}</MenuItem>
-              ))}
-            </Select>
-          </Grid>
-          <Grid item xs={4}>
-            <TextField required />
-          </Grid>
-          <Grid item xs={4}>
-            <Button variant="contained"> Add new </Button>
-          </Grid>
+    <div>
+      <Grid container spacing={3}>
+        <Grid item xs={4}>
+          <TextField
+            id="outlined-select-currency"
+            select
+            label="Coin"
+            value={crypto}
+            onChange={handleChange}
+            helperText="Please select your crypto"
+          >
+            {props.choices.map((choice) => (
+              <MenuItem value={choice}>{choice}</MenuItem>
+            ))}
+          </TextField>
         </Grid>
-      </FormControl>
-    </Box>
+        <Grid item xs={4}>
+          <TextField
+            value={quantity}
+            required
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs>
+          <Typography> {quantity} </Typography>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 
