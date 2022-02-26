@@ -1,8 +1,8 @@
-const Home = (props) => {
+import Coin from "./Coin";
 
-  return (
-    <h1> Hello </h1>
-  )
-}
+const Home = (props) => {
+  const cryptos = ["btc", "eth"];
+  return <Coin choices={cryptos} />;
+};
 
 export default Home;
