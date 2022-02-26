@@ -4,16 +4,30 @@ import Button from "@mui/material/Button";
 
 const Home = (props) => {
   const cryptos = ["btc", "eth"];
-  const [numCoins, setNumCoins] = useState(1);
-  const [coins, setCoins] = useState([<Coin choices={cryptos} />]);
+  const [coins, setCoins] = useState([<Coin id={0} choices={cryptos} />]);
+
+  const handleSubmit = (event) => {
+    coins.map((coin) => {
+      var crypto = document.getElementById(
+        coin.props.id + " choose crypto"
+      ).textContent;
+      var quantity = document.getElementById(coin.props.id + " quantity").value;
+
+      console.log(`Crypto: ${crypto} Quantity: ${quantity}`);
+    });
+  };
+
+  const addButton = (e) => {
+    setCoins([...coins, <Coin id={coins.length} choices={cryptos} />]);
+  };
 
   return (
     <div>
-      <form>{coins}</form>
-      <Button onClick={() => setCoins([...coins, <Coin choices={cryptos} />])}>
-        {" "}
-        Add{" "}
-      </Button>
+      <form>
+        {coins}
+        <Button onClick={handleSubmit}>Save Choices </Button>
+      </form>
+      <Button onClick={addButton}> Add </Button>
     </div>
   );
 };

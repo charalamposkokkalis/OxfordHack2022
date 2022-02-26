@@ -1,9 +1,5 @@
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
@@ -16,16 +12,12 @@ const Coin = (props) => {
     setCrypto(event.target.value);
   };
 
-  const handleClick = (event) => {
-    console.log(event);
-  };
-
   return (
     <div>
       <Grid container spacing={3}>
         <Grid item xs={4}>
           <TextField
-            id="outlined-select-currency"
+            id={props.id + " choose crypto"}
             select
             label="Coin"
             value={crypto}
@@ -39,13 +31,14 @@ const Coin = (props) => {
         </Grid>
         <Grid item xs={4}>
           <TextField
+            id={props.id + " quantity"}
             value={quantity}
             required
             onChange={(e) => setQuantity(e.target.value)}
           />
         </Grid>
         <Grid item xs>
-          <Typography> {quantity} </Typography>
+          <Typography id={props.id + " value"}> {quantity} </Typography>
         </Grid>
       </Grid>
     </div>
