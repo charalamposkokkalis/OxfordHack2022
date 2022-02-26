@@ -63,7 +63,10 @@ const Home = (props) => {
       <form>
         {coins}
         <Button onClick={addButton}> Add </Button>
-        <Button onClick={removeButton}> Remove Last </Button>
+        <Button onClick={coins.length > 1 ? removeButton : null}>
+          {" "}
+          Remove{" "}
+        </Button>
         <Button onClick={handleSubmit}>Save Choices </Button>
       </form>
     </div>
