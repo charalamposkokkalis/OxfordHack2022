@@ -21,13 +21,20 @@ const Home = (props) => {
     setCoins([...coins, <Coin id={coins.length} choices={cryptos} />]);
   };
 
+  const removeButton = (e) => {
+    const list = [...coins];
+    list.pop();
+    setCoins(list);
+  };
+
   return (
     <div>
       <form>
         {coins}
+        <Button onClick={addButton}> Add </Button>
+        <Button onClick={removeButton}> Remove Last </Button>
         <Button onClick={handleSubmit}>Save Choices </Button>
       </form>
-      <Button onClick={addButton}> Add </Button>
     </div>
   );
 };
