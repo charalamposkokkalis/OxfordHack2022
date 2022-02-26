@@ -5,8 +5,14 @@ from models import Articles,articles_schema
 # Create an application instance
 app = create_app()
 
-# Define a route to fetch the avaialable articles
 
+@app.route("/")
+def home():
+
+    return 
+
+
+# Define a route to fetch the avaialable articles
 @app.route("/articles", methods=["GET"], strict_slashes=False)
 def articles():
 
@@ -16,5 +22,6 @@ def articles():
 	return jsonify(results)
 
 
+# change debug to False when in prod
 if __name__ == "__main__":
 	app.run(debug=True)
