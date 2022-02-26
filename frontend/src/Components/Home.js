@@ -1,6 +1,8 @@
 import Coin from "./Coin";
 import { useState } from "react";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 // import axios from "axios";
 
 const Home = (props) => {
@@ -61,6 +63,17 @@ const Home = (props) => {
   return (
     <div>
       <form>
+        <Grid container spacing={3}>
+          <Grid item xs={4}>
+            <Typography> Coins </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography> Quantity </Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography> USD Value </Typography>
+          </Grid>
+        </Grid>
         {coins}
         <Button onClick={addButton}> Add </Button>
         <Button onClick={coins.length > 1 ? removeButton : null}>

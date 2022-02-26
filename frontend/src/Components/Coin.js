@@ -10,6 +10,7 @@ const Coin = (props) => {
 
   const handleChange = (event) => {
     setCrypto(event.target.value);
+    setQuantity(0);
   };
 
   return (
@@ -55,5 +56,3 @@ const Coin = (props) => {
 };
 
 export default Coin;
-
-
