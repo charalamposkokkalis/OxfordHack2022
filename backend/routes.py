@@ -20,9 +20,6 @@ from datetime import date, datetime, timedelta
 
 
 #set up coinmetrics
-
-
-
 sns.set_theme()
 sns.set(rc={'figure.figsize':(12,8)})
 logging.basicConfig(
@@ -39,13 +36,7 @@ except KeyError:
 
 
 client = CoinMetricsClient(api_key)
-
-
-
 #get date (yesterday: last available data)
-
-
-
 # Create an application instance
 app = create_app()
 
@@ -71,15 +62,12 @@ def coins():
 	yesterday = datetime.now() - timedelta(1)
 	d1 = yesterday.strftime("%Y-%m-%d")
 
-
 	metrics = "PriceUSD"
 	frequency = "1d"
 	start_time = d1
 	end_time = d1
 
-
 	asset_with_ref_rates = ['bch', 'bsv', 'btc', 'btg', 'dash', 'doge', 'etc', 'eth', 'ltc', 'vtc', 'xmr', 'zec']
-
 
 	df_diffmean = client.get_asset_metrics(
     	assets=asset_with_ref_rates,
