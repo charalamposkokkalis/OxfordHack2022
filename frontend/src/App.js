@@ -1,6 +1,8 @@
 import { useState,useEffect } from 'react'
 import './App.css';
-import ArticleList from './Components/ArticleList'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import ArticleList from './Components/ArticleList';
+import Home from './Components/Home';
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -21,18 +23,27 @@ function App() {
   },[])
 
   return (
-    <div className="App container m-4">
-    <div className="row">
-      <div className="text-center">
-      <h1>Connecting a React Frontend to a Flask Backend.</h1>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home/>} />
+        <Route path="/articles" element={<ArticleList articles={articles}/>}>
+          {/*
+          <div className="App container m-4">
+          <div className="row">
+            <div className="text-center">
+            <h1>Connecting a React Frontend to a Flask Backend.</h1>
+            </div>
+          </div>
 
-      <ArticleList 
-      articles={articles} 
-      />
+          <ArticleList 
+            articles={articles} 
+            />
 
-    </div>
+          </div>
+          */}
+    </Route>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
