@@ -109,3 +109,4 @@ dist
 .DS_Store
 *.py[cod]
 *.swp
+bin/
