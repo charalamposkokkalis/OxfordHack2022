@@ -15,10 +15,22 @@ import Solutions from "./Components/Solutions";
 
 function App() {
   return (
-    <Box sx={{ display: "flex", mt: 10, ml: 2 }}>
+    <Box
+      sx={{
+        display: "flex",
+        mt: 10,
+        ml: 2,
+        color: "green",
+      }}
+    >
       <AppBar
         position="fixed"
-        sx={{ width: `calc(100% - 240px)`, ml: `240px`, minHeight: 65 }}
+        sx={{
+          width: `calc(100% - 240px)`,
+          ml: `240px`,
+          minHeight: 65,
+          backgroundColor: "green",
+        }}
       >
         <Typography sx={{ ml: "50%" }}> CarbonBlock </Typography>
       </AppBar>
@@ -29,6 +41,8 @@ function App() {
           "& .MuiDrawer-paper": {
             width: 240,
             boxSizing: "border-box",
+            backgroundColor: "green",
+            color: "white",
           },
         }}
         variant="permanent"
@@ -60,5 +74,4 @@ function App() {
     </Box>
   );
 }
-
 export default App;

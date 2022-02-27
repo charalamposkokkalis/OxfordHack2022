@@ -88,7 +88,7 @@ const Home = (props) => {
       </form>
       <Typography>
         {"Your crypto portfolio emits the equivalent of " +
-          tons +
+          tons.toFixed(2) +
           " tons of carbon each year."}
       </Typography>
       <Typography>

@@ -11,7 +11,7 @@ def drive(tons):
     return 1000*tons*9*2.4
   
 def light(tons): #a 100w light bulb would need to burn for this many years 
-    return int(tons/0.75)
+    return int(12*tons/0.75)
 
 
 def cars(tons): #equivalent weight in cars
@@ -48,8 +48,11 @@ def totalFootprint(elements):
 def comparisions(tons):
     li = []
     li.append("eating "+ str(burgers(tons))+ " cheeseburgers")
-    li.append("a 100kW light bulb burning for "+ str(light(tons))+ " years")
-    li.append("taking "+ str(flights(tons))+ " flights from London to New York.")
+    li.append("a 100kW light bulb burning for "+ str(light(tons))+ " months")
+    if flights(tons)==1:
+        li.append("taking "+ str(flights(tons))+ " flight from London to New York.")
+    else:
+        li.append("taking "+ str(flights(tons))+ " flights from London to New York.")
 
     return li
 
