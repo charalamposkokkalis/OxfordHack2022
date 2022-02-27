@@ -58,19 +58,6 @@ const Home = (props) => {
     axios
       .post("http://localhost:5000/portfolio", JSON.stringify(reqString))
       .then((resp) => console.log(resp));
-    /*
-    axios
-      .fetch("http://localhost:5000/portfolio", requestOptions)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-      */
   };
 
   const addButton = (e) => {
