@@ -15,7 +15,7 @@ const Coin = (props) => {
 
   return (
     <div>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ width: 700 }}>
         <Grid item xs={4}>
           <TextField
             id={props.id + " choose crypto"}
@@ -23,7 +23,7 @@ const Coin = (props) => {
             label="Coin"
             value={crypto}
             onChange={handleChange}
-            helperText="Please select your crypto"
+            sx={{ width: 90, mt: 2 }}
           >
             {Object.keys(props.choices).map((choice) => (
               <MenuItem value={choice}>{choice}</MenuItem>
@@ -34,12 +34,13 @@ const Coin = (props) => {
           <TextField
             id={props.id + " quantity"}
             value={quantity}
-            required
+            label={crypto}
             onChange={(e) => setQuantity(e.target.value)}
+            sx={{ mt: 2, width: 160 }}
           />
         </Grid>
         <Grid item xs>
-          <Typography id={props.id + " value"}>
+          <Typography id={props.id + " value"} sx={{ mt: 2 }}>
             {" "}
             {quantity
               ? parseFloat(quantity) *
