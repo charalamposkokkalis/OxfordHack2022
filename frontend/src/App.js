@@ -11,26 +11,9 @@ import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Solutions from "./Components/Solutions"
 
 function App() {
-  // const [articles, setArticles] = useState([]);
-
-  // Modify the current state by setting the new data to
-  // the response from the backend
-  /*
-  useEffect(() => {
-    fetch("http://localhost:5000/articles", {
-      methods: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setArticles(response))
-      .catch((error) => console.log(error));
-  }, []);
-*/
-
   return (
     <Box sx={{ display: "flex", mt: 10, ml: 2 }}>
       <AppBar
@@ -68,7 +51,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/solutions" element={<Home />} />
+          <Route
+            exact
+            path="/solutions"
+            element={<Solutions sols={["sol1", "sol2"]} />}
+          />
           <Route exact path="/about" element={<Home />} />
         </Routes>
       </BrowserRouter>
@@ -77,3 +64,5 @@ function App() {
 }
 
 export default App;
+
+
