@@ -47,9 +47,8 @@ def totalFootprint(elements):
 
 def comparisions(tons):
     li = []
-    li.append("eating "+ str(burgers(tons))+ " cheeseburgers.")
-    li.append("a 100kW light bulb burning for "+ str(light(tons))+ " years.")
-    li.append("the weight of "+ str(cars(tons))+ " cars.")
+    li.append("eating "+ str(burgers(tons))+ " cheeseburgers")
+    li.append("a 100kW light bulb burning for "+ str(light(tons))+ " years")
     li.append("taking "+ str(flights(tons))+ " flights from London to New York.")
 
     return li
@@ -57,13 +56,13 @@ def comparisions(tons):
 def sol(tons):
     li = []
 
-    li.append("plant "+ str(trees(tons))+" trees.")
+    li.append("plant "+ str(trees(tons))+" trees")
     li.append("donate "+ str(int(35*tons/12)+1)+ "$ per month to Biochar or a similar carbon-removing charity.")
 
     return li
 
 def out(elem):
     tons = totalFootprint(elem)
-    return (comparisions(tons), sol(tons))
+    return (comparisions(tons), sol(tons), tons)
 
 

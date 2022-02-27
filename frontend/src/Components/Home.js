@@ -25,7 +25,9 @@ const Home = (props) => {
     zec: 107.2972,
   };
   const [coins, setCoins] = useState([<Coin id={0} choices={cryptos} />]);
-
+  const [solutions, setSolutions] = useState([]);
+  const [comparisons, setComparisons] = useState([]);
+  const [tons, setTons] = useState(0);
 
   const handleSubmit = (event) => {
     const reqString = { vals: [] };
@@ -45,7 +47,11 @@ const Home = (props) => {
     console.log(JSON.stringify(reqString));
     axios
       .post("http://localhost:5000/portfolio", JSON.stringify(reqString))
-      .then((resp) => console.log(resp));
+      .then((resp) => {
+        setSolutions(resp.data.out[0]);
+        setComparisons(resp.data.out[1]);
+        setTons(resp.data.out[2]);
+      });
   };
 
   const addButton = (e) => {
@@ -80,6 +86,23 @@ const Home = (props) => {
         </Button>
         <Button onClick={handleSubmit}>Save Choices </Button>
       </form>
+      <Typography>
+        {"Your crypto portfolio emits the equivalent of " +
+          tons +
+          " tons of carbon each year."}
+      </Typography>
+      <Typography>
+        {coins.length > 0
+          ? "Your carbon footprint is the equivalent of " +
+            solutions.join(", or ")
+          : ""}
+      </Typography>
+      <Typography>
+        {coins.length > 0
+          ? "To neutralize your carbon footprint, you could " +
+            comparisons.join(", or ")
+          : ""}
+      </Typography>
     </div>
   );
 };

@@ -98,7 +98,9 @@ def portfolio():
     x = out(vals)
     solutions = x[0]
     comparisons = x[1]
+    tons = x[2]
     return {'out':x}
+
 
 # change debug to False when in prod
 if __name__ == "__main__":
