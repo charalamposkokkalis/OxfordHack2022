@@ -22,15 +22,14 @@ def cars(tons): #equivalent weight in cars
 def totalFootprint(elements):
     carbon = 0
 
-    costs = {'btc':114, 'eth': 44, 'doge': 7.8, 'bch': 3.4, 'ltc': 3.2, 'etc': 1.7, 'xmr': 1, 'bsv': 0.5, 'dash': 0.5, 'zec': 0.5}
-    marketCaps =  {'btc': 737, 'eth': 328, 'doge': 0.46, 'bch': 4.1, 'ltc': 0.7, 'etc': 0.4, 'xmr': 0.1, 'bsv': 0.073, 'dash': 0.141, 'zec': 0.163} #in trillion
+    costs = {'ada': 0, 'btc':114, 'eth': 44, 'doge': 7.8, 'bch': 3.4, 'ltc': 3.2, 'etc': 1.7, 'xmr': 1, 'bsv': 0.5, 'dash': 0.5, 'zec': 0.5, 'sol': 0, 'xrp': 0}
+    marketCaps =  {'ada':1, 'btc': 737, 'eth': 328, 'doge': 0.46, 'bch': 4.1, 'ltc': 0.7, 'etc': 0.4, 'xmr': 0.1, 'bsv': 0.073, 'dash': 0.141, 'zec': 0.163, 'sol': 1, 'xrp': 1} #in trillion
 
 
     
     for elem in elements:
         coin = elem[0]
-        amount = elem[1]
-        value = elem[2]
+        value = elem[1]
 
         marketShare = value/(marketCaps[coin]*10**9)
         carbonFoot = marketShare * costs[coin]
@@ -63,7 +62,9 @@ def sol(tons):
 
     return li
 
-def out(tons):
+def out(elem):
+    tons = totalFootprint(elem)
     return (comparisions(tons), sol(tons))
+
 
 #print(out(17))
