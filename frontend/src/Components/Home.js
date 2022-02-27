@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import audiofile from "./siu.mp3";
 
 axios.defaults.baseURL = "http://localhost:5000";
 
@@ -28,6 +29,7 @@ const Home = (props) => {
   const [solutions, setSolutions] = useState([]);
   const [comparisons, setComparisons] = useState([]);
   const [tons, setTons] = useState(0);
+  let audio = new Audio(audiofile);
 
   const handleSubmit = (event) => {
     const reqString = { vals: [] };
@@ -45,6 +47,7 @@ const Home = (props) => {
       reqString["vals"].push([crypto, quantity, usd]);
     });
     console.log(JSON.stringify(reqString));
+    audio.play();
     axios
       .post("http://localhost:5000/portfolio", JSON.stringify(reqString))
       .then((resp) => {
@@ -79,12 +82,12 @@ const Home = (props) => {
           </Grid>
         </Grid>
         {coins}
-        <Button onClick={addButton}> Add </Button>
+        <Button onClick={addButton}> Add Coin </Button>
         <Button onClick={coins.length > 1 ? removeButton : null}>
           {" "}
-          Remove{" "}
+          Remove Coin{" "}
         </Button>
-        <Button onClick={handleSubmit}>Save Choices </Button>
+        <Button onClick={handleSubmit}>Calculate </Button>
       </form>
       <Typography>
         {"Your crypto portfolio emits the equivalent of " +
