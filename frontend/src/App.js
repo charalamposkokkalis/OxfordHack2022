@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ArticleList from "./Components/ArticleList";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Home from "./Components/Home";
 import Drawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
@@ -11,7 +10,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
 function App() {
@@ -56,16 +54,22 @@ function App() {
         <Toolbar />
         <Divider />
         <List>
-          {["My Portfolio", "Solutions", "About us"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button key={"My Portfolio"}>
+            <ListItemText primary={"My Portfolio"} />
+          </ListItem>
+          <ListItem button key={"Solutions"}>
+            <ListItemText primary={"Solutions"} />
+          </ListItem>
+          <ListItem button key={"About Us"}>
+            <ListItemText primary={"About Us"} />
+          </ListItem>
         </List>
       </Drawer>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/solutions" element={<Home />} />
+          <Route exact path="/about" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </Box>
