@@ -34,15 +34,13 @@ function App() {
 */
 
   return (
-    <Box sx={{ display: "flex" }}>
-      {/*
+    <Box sx={{ display: "flex", mt: 10, ml: 2 }}>
       <AppBar
         position="fixed"
         sx={{ width: `calc(100% - 240px)`, ml: `240px`, minHeight: 65 }}
       >
-        <Typography> AppBar </Typography>
+        <Typography sx={{ ml: "50%" }}> AppName </Typography>
       </AppBar>
-      */}
       <Drawer
         sx={{
           width: 240,
@@ -58,7 +56,7 @@ function App() {
         <Toolbar />
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          {["My Portfolio", "Solutions", "About us"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemText primary={text} />
             </ListItem>
@@ -68,20 +66,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/*
-          <div className="App container m-4">
-          <div className="row">
-            <div className="text-center">
-            <h1>Connecting a React Frontend to a Flask Backend.</h1>
-            </div>
-          </div>
-
-          <ArticleList 
-            articles={articles} 
-            />
-
-          </div>
-          */}
         </Routes>
       </BrowserRouter>
     </Box>
