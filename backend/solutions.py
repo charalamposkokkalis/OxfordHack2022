@@ -29,7 +29,7 @@ def totalFootprint(elements):
     
     for elem in elements:
         coin = elem[0]
-        value = elem[1]
+        value = elem[2]
 
         marketShare = value/(marketCaps[coin]*10**9)
         carbonFoot = marketShare * costs[coin]
@@ -47,7 +47,7 @@ def totalFootprint(elements):
 
 def comparisions(tons):
     li = []
-    li.append("eating "+ str(burgers(tons))+ "cheeseburgers.")
+    li.append("eating "+ str(burgers(tons))+ " cheeseburgers.")
     li.append("a 100kW light bulb burning for "+ str(light(tons))+ " years.")
     li.append("the weight of "+ str(cars(tons))+ " cars.")
     li.append("taking "+ str(flights(tons))+ " flights from London to New York.")
@@ -67,4 +67,3 @@ def out(elem):
     return (comparisions(tons), sol(tons))
 
 
-#print(out(17))

@@ -19,6 +19,8 @@ from datetime import timezone as timezone_info
 from statistics import *
 from datetime import date, datetime, timedelta
 
+from solutions import *
+
 
 #set up coinmetrics
 sns.set_theme()
@@ -86,12 +88,17 @@ def coins():
 
 	return jsonify(rates)
 
+solutions = []
+comparisons = []
+
 @app.route("/portfolio", methods=["POST"])
 @cross_origin(origin='*',headers=['Content-Type'])
 def portfolio():
     vals = request.get_json(force=True)['vals']
-    print(vals)
-    return 'hello'
+    x = out(vals)
+    solutions = x[0]
+    comparisons = x[1]
+    return {'out':x}
 
 # change debug to False when in prod
 if __name__ == "__main__":
