@@ -50,13 +50,11 @@ function App() {
       </Drawer>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home />} />
           <Route
-            exact
             path="/solutions"
             element={<Solutions sols={["sol1", "sol2"]} />}
           />
-          <Route exact path="/about" element={<Home />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </Box>

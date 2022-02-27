@@ -24,20 +24,8 @@ const Home = (props) => {
     xrp: 0.7589,
     zec: 107.2972,
   };
-  // const [loading, setLoading] = useState(false);
   const [coins, setCoins] = useState([<Coin id={0} choices={cryptos} />]);
 
-  /*
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const res = await axios.get("http://localhost:5000/coins");
-      setCryptos(res.data);
-      setLoading(false);
-    };
-    fetchData();
-  }, []);
-  */
 
   const handleSubmit = (event) => {
     const reqString = { vals: [] };
