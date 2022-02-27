@@ -47,7 +47,7 @@ const Coin = (props) => {
                 props.choices[
                   document.getElementById(props.id + " choose crypto")
                     .textContent
-                ]
+                ].toFixed(2)
               : 0}{" "}
           </Typography>
         </Grid>
