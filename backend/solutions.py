@@ -59,11 +59,11 @@ def sol(tons):
     li = []
 
     li.append("plant "+ str(trees(tons))+" trees.")
-    li.append("donate "+ str(35*tons)+ "$ to the Biochar or a similar carbon-removing charity.")
+    li.append("donate "+ str(int(35*tons/12)+1)+ "$ per month to Biochar or a similar carbon-removing charity.")
 
     return li
 
 def out(tons):
     return (comparisions(tons), sol(tons))
 
-print(out(17))
+#print(out(17))
