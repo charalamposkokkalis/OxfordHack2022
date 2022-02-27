@@ -1,9 +1,11 @@
 import Coin from "./Coin";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-// import axios from "axios";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:5000";
 
 const Home = (props) => {
   // const [cryptos, setCryptos] = useState({ btc: 1, eth: 2 });
@@ -40,14 +42,37 @@ const Home = (props) => {
   */
 
   const handleSubmit = (event) => {
+    const reqString = { vals: [] };
     coins.map((coin) => {
       var crypto = document.getElementById(
         coin.props.id + " choose crypto"
       ).textContent;
-      var quantity = document.getElementById(coin.props.id + " quantity").value;
+      var quantity = parseFloat(
+        document.getElementById(coin.props.id + " quantity").value
+      );
+      var usd = parseFloat(
+        document.getElementById(coin.props.id + " value").textContent
+      );
 
-      console.log(`Crypto: ${crypto} Quantity: ${quantity}`);
+      reqString["vals"].push([crypto, quantity, usd]);
     });
+    console.log(JSON.stringify(reqString));
+    axios
+      .post("http://localhost:5000/portfolio", JSON.stringify(reqString))
+      .then((resp) => console.log(resp));
+    /*
+    axios
+      .fetch("http://localhost:5000/portfolio", requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      */
   };
 
   const addButton = (e) => {

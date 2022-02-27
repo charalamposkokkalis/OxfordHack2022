@@ -1,4 +1,5 @@
 from flask import current_app,jsonify,request
+from flask_cors import CORS, cross_origin
 from app import create_app,db
 from models import Articles,articles_schema
 from coinmetrics.api_client import CoinMetricsClient
@@ -39,6 +40,7 @@ client = CoinMetricsClient(api_key)
 #get date (yesterday: last available data)
 # Create an application instance
 app = create_app()
+CORS(app)
 
 
 @app.route("/")
@@ -83,6 +85,13 @@ def coins():
 		rates[ass['asset']] = ass['PriceUSD']
 
 	return jsonify(rates)
+
+@app.route("/portfolio", methods=["POST"])
+@cross_origin(origin='*',headers=['Content-Type'])
+def portfolio():
+    vals = request.get_json(force=True)['vals']
+    print(vals)
+    return 'hello'
 
 # change debug to False when in prod
 if __name__ == "__main__":
